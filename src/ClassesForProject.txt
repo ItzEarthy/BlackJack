@@ -1,0 +1,55 @@
+// Card Class
+public class Card {
+    private String suit;
+    private String rank;
+    private int value;
+
+    public Card(String suit, String rank, int value) { /* Constructor */ }
+    public int getValue() { /* Returns the value of the card */ }
+}
+
+// Deck Class
+public class Deck {
+    private ArrayList<Card> cards;
+
+    public Deck() { /* Constructor to initialize and shuffle the deck */ }
+    public void shuffle() { /* Shuffle the deck */ }
+    public Card dealCard() { /* Deals a card */ }
+}
+
+// Hand Class
+public class Hand {
+    private ArrayList<Card> cards;
+
+    public void addCard(Card card) { /* Adds card to hand */ }
+    public int getHandValue() { /* Calculates hand's total value */ }
+    public boolean isBust() { /* Checks if hand value exceeds 21 */ }
+}
+
+// Player Class
+public class Player {
+    private Hand hand;
+    private int bankroll;
+    private int bet;
+
+    public void placeBet(int amount) { /* Sets bet amount */ }
+    public void adjustBankroll(int outcome) { /* Adjusts bankroll based on outcome */ }
+    public void clearHand() { /* Resets hand for new round */ }
+}
+
+// Game Class
+public class Game {
+    private Deck deck;
+    private Player player;
+    private Player dealer;
+    private boolean playerTurn;
+    private boolean roundOver;
+
+    public void startRound() { /* Starts new round */ }
+    public void playerHit() { /* Player chooses to hit */ }
+    public void playerStand() { /* Player chooses to stand */ }
+    public void dealerTurn() { /* Dealer hits until hand value is at least 17 */ }
+    public void determineWinner() { /* Compares player and dealer hands */ }
+    public void displayStatus() { /* Displays game status and bankroll */ }
+    public void endRound() { /* Ends the round, ready for a new game */ }
+}

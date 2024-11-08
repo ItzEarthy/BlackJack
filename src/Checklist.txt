@@ -1,0 +1,53 @@
+1. Initial Setup
+   - Card Deck Structure:
+     - Implement a 52-card deck with suits (Hearts, Diamonds, Clubs, Spades) and values (2-10, J, Q, K, A).
+     - Create function to shuffle the deck.
+     - Develop logic for drawing a card from the deck.
+   - Game Rules and Hand Value Calculation:
+     - Write logic to calculate the value of a hand.
+     - Implement handling of Aces (1 or 11 based on hand value).
+   - Bankroll Management:
+     - Set up bankroll initialization, allowing players to specify their starting tokens.
+     - Add basic functionality for placing bets and adjusting bankroll based on outcomes.
+
+2. Game Flow and Turn Logic
+   - Player Actions:
+     - Implement "Hit" action to draw an additional card.
+     - Implement "Stand" action to keep the current hand.
+     - Display options to "Hit" or "Stand" on each turn.
+   - Dealer Actions:
+     - Program dealer to hit until hand value is at least 17.
+     - Implement dealer bust condition if hand goes over 21.
+   - Game Outcome and Win/Loss Logic:
+     - Compare player and dealer hands to determine winner.
+     - Update player bankroll based on win, lose, or draw outcome.
+     - Handle tie scenarios appropriately.
+
+3. Text-Based Interface and Testing
+   - Text-Based User Interface:
+     - Display player's hand, hand total, and bankroll.
+     - Display dealer's hand and hand total (only one card face-up initially).
+     - Show options for "Hit" and "Stand" during player’s turn.
+     - Display win/loss outcome at the end of each round.
+   - Game Flow Polishing:
+     - Refine game loop to ensure smooth transitions between turns.
+     - Implement option to play another round or exit the game.
+   - Testing and Debugging:
+     - Conduct functional tests for all game logic (e.g., busts, blackjack, ties).
+     - Test edge cases (e.g., dealer hits 17 with Ace, player gets Blackjack, bankroll edge cases).
+     - Verify bankroll updates accurately after each hand.
+     - Debug any issues with game logic or interface interactions.
+
+4. Optional Stretch Goals
+   - Graphical User Interface (GUI):
+     - Set up a simple GUI framework (e.g., Tkinter, HTML/CSS for web).
+     - Add buttons for "Hit" and "Stand" in GUI.
+     - Display player and dealer hand totals in GUI.
+     - Include elements for bankroll, bet amount, and outcome messages.
+   - Card Images:
+     - Add images for each card (based on suit and value).
+     - Display player and dealer cards as images in GUI.
+   - Advanced Betting & Payout Structure:
+     - Implement a 3:2 payout for natural Blackjack (Ace + 10-value card).
+     - Enable players to adjust their bet size between rounds.
+     - Ensure bankroll updates correctly with advanced payouts.
