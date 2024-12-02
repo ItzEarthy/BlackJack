@@ -10,7 +10,10 @@ public class Player {
         bankroll = initialBankroll;
         bet = 0;
     }
-
+   
+    public int getBet() {
+    	return bet;
+    }
     // Method to place a bet, deducting the amount from the bankroll
     public void placeBet(int amount) {
         if (amount <= bankroll && amount > 0) {
@@ -19,6 +22,14 @@ public class Player {
         } else {
             System.out.println("Invalid bet amount.");
         }
+    }
+    public void doubledown(int amount) {
+    	if(amount*2<=bankroll && amount>0) {
+    		bet=amount*2;
+    		bankroll-=bet;
+    	}else {
+    		System.out.println("Invalid not enough chips to double down");
+    	}
     }
 
     // Method to add winnings back to the bankroll
