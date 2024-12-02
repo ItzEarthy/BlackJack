@@ -28,7 +28,6 @@ public class Sound {
             clip.start();
 
 
-
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
