@@ -29,16 +29,16 @@ public class Card {
     @Override
     public String toString() {
         if (suit == "Hearts"){
-            return Colors.RED + Colors.WHITE_BACKROUND+"♥ " + rank + Colors.ANSI_RESET;
+            return Colors.RED + Colors.WHITE_BACKROUND+"♥ " + rank + Colors.STOP;
         }
         else if (suit == "Clubs"){
-            return Colors.BLACK + Colors.WHITE_BACKROUND+"♣ " + rank + Colors.ANSI_RESET;
+            return Colors.BLACK + Colors.WHITE_BACKROUND+"♣ " + rank + Colors.STOP;
         }
         else if (suit == "Diamonds"){
-            return Colors.RED + Colors.WHITE_BACKROUND+"♦ " + rank + Colors.ANSI_RESET;
+            return Colors.RED + Colors.WHITE_BACKROUND+"♦ " + rank + Colors.STOP;
         }
         else if (suit == "Spades"){
-            return Colors.BLACK + Colors.WHITE_BACKROUND+"♠ " + rank + Colors.ANSI_RESET;
+            return Colors.BLACK + Colors.WHITE_BACKROUND+"♠ " + rank + Colors.STOP;
         }
         else{
             return null;

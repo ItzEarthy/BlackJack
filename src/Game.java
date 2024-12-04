@@ -4,6 +4,8 @@ public class Game {
     private Deck deck;
     private Player player;
     private Player dealer;
+    Console console = new Console();
+    Sound sound = new Sound();
 
     public Game(int initialBankroll) {
         deck = new Deck();
@@ -24,36 +26,35 @@ public class Game {
         dealer.addCardToHand(deck.dealCard());
 
         // Display initial hands
-        player.displayPlayerInfo();
-        System.out.println("Dealer's Hand:");
-        dealer.getHand();
+        displayTable();
     }
 
     // Method to handle the player’s turn
     private void playerTurn(Scanner scanner) {
         while (true) {
             if (player.hasBlackjack()){
-                System.out.println("You have Blackjack. Player Wins!");
+                System.out.println("You have Blackjack");
                 break;
             }
-            System.out.println("Choose an action: 1) Hit 2) Stand 3) Double down");
+            System.out.println("Choose an action: \n1) Hit \n2) Stand \n3) Double down");
             int choice = scanner.nextInt();
 
             if (choice == 1) { // Hit
                 player.addCardToHand(deck.dealCard());
-                player.displayPlayerInfo();
+                displayTable();
+
 
                 if (player.isBust()) {
                     System.out.println("You busted!");
                     break;
                 }
             } else if (choice == 2) { // Stand
+                displayTable();
                 break;
             } else if (choice == 3) {//double down
                 player.addCardToHand(deck.dealCard());
-                player.displayPlayerInfo();
-
                 player.doubledown(player.getBet());
+                displayTable();
                 break;
             }
         }
@@ -63,6 +64,7 @@ public class Game {
     private void dealerTurn() {
         while (dealer.getHandTotal() < 17) {
             dealer.addCardToHand(deck.dealCard());
+            displayTable();
         }
     }
 
@@ -71,10 +73,9 @@ public class Game {
         int playerTotal = player.getHandTotal();
         int dealerTotal = dealer.getHandTotal();
 
-        System.out.println("Dealer's Hand:");
-        dealer.getHand();
 
         if (player.isBust()) {
+            sound.playSound("bust");
             System.out.println("Dealer wins.");
         } else if (dealer.isBust() || playerTotal > dealerTotal) {
             System.out.println("Player wins.");
@@ -89,6 +90,24 @@ public class Game {
         System.out.println("Bankroll after round: " + player.getBankroll());
     }
 
+    public void displayTable(){
+        console.clearScreen();
+        System.out.println("\n"+Colors.PURPLE+"|--------TABLE--------|\n"+Colors.STOP);
+
+        System.out.println("Dealer's Hand:");
+        dealer.getHand();
+        player.displayPlayerInfo();
+
+        System.out.println("\n"+Colors.PURPLE+"|---------------------|\n"+Colors.STOP);
+
+        System.out.println("Bankroll: " + Colors.GREEN + player.getBankroll() + Colors.STOP);
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     // Method to run the game loop
     public void playGame() {
         Console.clearScreen();
@@ -98,6 +117,8 @@ public class Game {
 
         boolean playagain = true;
         while (playagain == true) {
+            System.out.println("Bankroll: " + Colors.GREEN + player.getBankroll() + Colors.STOP);
+
             System.out.print("Enter bet ammount: ");
             int betAmount = scanner.nextInt();
             player.placeBet(betAmount);
@@ -111,7 +132,7 @@ public class Game {
 
             determineOutcome();
 
-            System.out.println("Would you like to continue playing? 1/yes : 0/no");
+            System.out.println("Would you like to continue playing? \n1) Yes\n0) No");
             int choice1 = scanner.nextInt();
             if (choice1 == 0) {
                 playagain = false;

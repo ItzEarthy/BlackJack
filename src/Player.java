@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class Player {
     private Hand hand;           // The player's hand of cards
     private int bankroll;        // The player's total available tokens
-    private int bet;             // The current bet amount
+    private int bet;// The current bet amount
+    Sound sound = new Sound();
 
     // Constructor to initialize a player with a bankroll
     public Player(int initialBankroll) {
@@ -21,14 +22,26 @@ public class Player {
         if (amount <= bankroll && amount > 0) {
             bet = amount;
             bankroll -= bet;
+            sound.playSound("bet");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         } else {
             System.out.println("Invalid bet amount.");
         }
     }
     public void doubledown(int amount) {
     	if(amount*2<=bankroll && amount>0) {
-    		bet=amount*2;
-    		bankroll-=bet;
+            bankroll-=bet;
+            bet+=amount;
+            sound.playSound("bet");
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
     	}else {
     		System.out.println("Invalid not enough chips to double down");
     	}
@@ -37,6 +50,7 @@ public class Player {
     // Method to add winnings back to the bankroll
     public void winBet() {
         bankroll += bet * 2; // 1:1 payout for winning
+        sound.playSound("win");
     }
 
     // Method to handle a tie (bet returned to bankroll)
@@ -84,8 +98,8 @@ public class Player {
 
     // Display the player's hand and bankroll
     public void displayPlayerInfo() {
-        System.out.println("Player's Hand:");
+        System.out.println("\nPlayer's Hand:");
         hand.displayHand();
-        System.out.println("Bankroll: " + bankroll);
+
     }
 }

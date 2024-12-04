@@ -62,8 +62,8 @@ public class Hand {
     // Method to display all cards in the hand (for text-based interface)
     public void displayHand() {
         for (Card card : cards) {
-            System.out.println(card);
+            System.out.print(card + "\t");
         }
-        System.out.println("Total Value: " + totalValue);
+        System.out.println("\nTotal Value: " + Colors.BLUE + totalValue + Colors.STOP);
     }
 }
