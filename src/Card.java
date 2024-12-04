@@ -28,19 +28,15 @@ public class Card {
     // Method to display the card as a string (e.g., "Ace of Hearts")
     @Override
     public String toString() {
-        if (suit == "Hearts"){
-            return Colors.RED + Colors.WHITE_BACKROUND+"♥ " + rank + Colors.STOP;
-        }
-        else if (suit == "Clubs"){
-            return Colors.BLACK + Colors.WHITE_BACKROUND+"♣ " + rank + Colors.STOP;
-        }
-        else if (suit == "Diamonds"){
-            return Colors.RED + Colors.WHITE_BACKROUND+"♦ " + rank + Colors.STOP;
-        }
-        else if (suit == "Spades"){
-            return Colors.BLACK + Colors.WHITE_BACKROUND+"♠ " + rank + Colors.STOP;
-        }
-        else{
+        if (suit == "Hearts") {
+            return Colors.RED + Colors.WHITE_BACKROUND + "♥ " + rank + Colors.STOP;
+        } else if (suit == "Clubs") {
+            return Colors.BLACK + Colors.WHITE_BACKROUND + "♣ " + rank + Colors.STOP;
+        } else if (suit == "Diamonds") {
+            return Colors.RED + Colors.WHITE_BACKROUND + "♦ " + rank + Colors.STOP;
+        } else if (suit == "Spades") {
+            return Colors.BLACK + Colors.WHITE_BACKROUND + "♠ " + rank + Colors.STOP;
+        } else {
             return null;
         }
 

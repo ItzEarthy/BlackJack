@@ -32,7 +32,7 @@ public class Game {
     // Method to handle the player’s turn
     private void playerTurn(Scanner scanner) {
         while (true) {
-            if (player.hasBlackjack()){
+            if (player.hasBlackjack()) {
                 System.out.println("You have Blackjack");
                 break;
             }
@@ -90,15 +90,15 @@ public class Game {
         System.out.println("Bankroll after round: " + player.getBankroll());
     }
 
-    public void displayTable(){
+    public void displayTable() {
         console.clearScreen();
-        System.out.println("\n"+Colors.PURPLE+"|--------TABLE--------|\n"+Colors.STOP);
+        System.out.println("\n" + Colors.PURPLE + "|--------TABLE--------|\n" + Colors.STOP);
 
         System.out.println("Dealer's Hand:");
         dealer.getHand();
         player.displayPlayerInfo();
 
-        System.out.println("\n"+Colors.PURPLE+"|---------------------|\n"+Colors.STOP);
+        System.out.println("\n" + Colors.PURPLE + "|---------------------|\n" + Colors.STOP);
 
         System.out.println("Bankroll: " + Colors.GREEN + player.getBankroll() + Colors.STOP);
         try {

@@ -39,6 +39,7 @@ public class Deck {
         }
 
     }
+
     // Method to deal a card from the top of the deck
     public Card dealCard() {
         if (!cards.isEmpty()) {

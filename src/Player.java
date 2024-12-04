@@ -12,11 +12,12 @@ public class Player {
         bankroll = initialBankroll;
         bet = 0;
     }
-   
+
     public int getBet() {
 
         return bet;
     }
+
     // Method to place a bet, deducting the amount from the bankroll
     public void placeBet(int amount) {
         if (amount <= bankroll && amount > 0) {
@@ -32,19 +33,20 @@ public class Player {
             System.out.println("Invalid bet amount.");
         }
     }
+
     public void doubledown(int amount) {
-    	if(amount*2<=bankroll && amount>0) {
-            bankroll-=bet;
-            bet+=amount;
+        if (amount * 2 <= bankroll && amount > 0) {
+            bankroll -= bet;
+            bet += amount;
             sound.playSound("bet");
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-    	}else {
-    		System.out.println("Invalid not enough chips to double down");
-    	}
+        } else {
+            System.out.println("Invalid not enough chips to double down");
+        }
     }
 
     // Method to add winnings back to the bankroll
@@ -75,7 +77,7 @@ public class Player {
 
     // Method to check if the player has Blackjack
     public boolean hasBlackjack() {
-        if (hand.hasBlackjack()){
+        if (hand.hasBlackjack()) {
             bankroll += bet;
         }
         return hand.hasBlackjack();
@@ -83,7 +85,7 @@ public class Player {
 
     // Getter for the player's hand
     public void getHand() {
-         hand.displayHand();
+        hand.displayHand();
     }
 
     // Getter for the player's bankroll

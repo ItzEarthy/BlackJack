@@ -7,7 +7,7 @@ public class Main {
         Sound sound = new Sound();
         sound.playSound("jazz");
         int bankroll = 0;
-        System.out.println("Enter your bankroll: " );
+        System.out.println("Enter your bankroll: ");
         Scanner sc = new Scanner(System.in);
         bankroll = sc.nextInt();
 

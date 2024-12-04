@@ -4,7 +4,8 @@ import java.io.IOException;
 
 public class Sound {
 
-    public Sound() {}
+    public Sound() {
+    }
 
     public void playSound(String sound_name) {
         String file_name = "src/Sounds/" + sound_name + ".wav"; // Ensure the file is in the project directory
@@ -26,10 +27,9 @@ public class Sound {
 
             // Play the sound
 
-            if (sound_name == "jazz"){
+            if (sound_name == "jazz") {
                 clip.loop(Clip.LOOP_CONTINUOUSLY);
-            }
-            else {
+            } else {
                 clip.start();
             }
 

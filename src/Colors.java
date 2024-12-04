@@ -1,5 +1,4 @@
-public class Colors
-{
+public class Colors {
     public static String STOP = "\u001B[0m";
     public static final String YELLOW = "\u001B[33m";
     public static final String BLUE = "\u001B[34m";
