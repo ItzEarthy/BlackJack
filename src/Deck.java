@@ -32,6 +32,7 @@ public class Deck {
         Collections.shuffle(cards);
         sound.playSound("shuffle");
         try {
+            System.out.println("Deck Shuffeling");
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -43,7 +44,7 @@ public class Deck {
         if (!cards.isEmpty()) {
             sound.playSound("place"); // Play sound before returning the card
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

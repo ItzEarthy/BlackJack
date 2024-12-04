@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Player {
     private Hand hand;           // The player's hand of cards
@@ -12,7 +13,8 @@ public class Player {
     }
    
     public int getBet() {
-    	return bet;
+
+        return bet;
     }
     // Method to place a bet, deducting the amount from the bankroll
     public void placeBet(int amount) {
@@ -59,6 +61,9 @@ public class Player {
 
     // Method to check if the player has Blackjack
     public boolean hasBlackjack() {
+        if (hand.hasBlackjack()){
+            bankroll += bet;
+        }
         return hand.hasBlackjack();
     }
 

@@ -32,6 +32,10 @@ public class Game {
     // Method to handle the player’s turn
     private void playerTurn(Scanner scanner) {
         while (true) {
+            if (player.hasBlackjack()){
+                System.out.println("You have Blackjack. Player Wins!");
+                break;
+            }
             System.out.println("Choose an action: 1) Hit 2) Stand 3) Double down");
             int choice = scanner.nextInt();
 
@@ -45,12 +49,12 @@ public class Game {
                 }
             } else if (choice == 2) { // Stand
                 break;
-            }else if(choice==3) {//double down
-            	player.addCardToHand(deck.dealCard());
-            	player.displayPlayerInfo();
-            	
-            	player.doubledown(player.getBet());
-            	break;
+            } else if (choice == 3) {//double down
+                player.addCardToHand(deck.dealCard());
+                player.displayPlayerInfo();
+
+                player.doubledown(player.getBet());
+                break;
             }
         }
     }
@@ -87,40 +91,42 @@ public class Game {
 
     // Method to run the game loop
     public void playGame() {
+        Console.clearScreen();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Welcome to Blackjack!");
-        System.out.print("Enter the number of chips out your Bankroll you would like to bet: ");
-        int betAmount = scanner.nextInt();
-        player.placeBet(betAmount);
-        boolean playagain=true;
-        while(playagain==true) {
-        startRound();
-        playerTurn(scanner);
+        System.out.println("\nWelcome to Blackjack!");
 
-        if (!player.isBust()) {
-            dealerTurn();
-        }
+        boolean playagain = true;
+        while (playagain == true) {
+            System.out.print("Enter bet ammount: ");
+            int betAmount = scanner.nextInt();
+            player.placeBet(betAmount);
 
-        determineOutcome();
-        
-        System.out.println("Would you like to continue playing? 1/yes : 0/no");
-        int choice1=scanner.nextInt();
-        if(choice1==0) {
-        	playagain=false;
-        	System.out.println("Player has choosen to stop playing, final bankroll amount: "+player.getBankroll());
-        }else if(choice1==1) {
-        	System.out.println("PLayer has choosen to continue playing, Goodluck!");
-        }else {
-        	System.out.println("Invalid option");
-        	break;
-        }
-        	
-        	
-        
-      
+            startRound();
+            playerTurn(scanner);
+
+            if (!player.isBust()) {
+                dealerTurn();
+            }
+
+            determineOutcome();
+
+            System.out.println("Would you like to continue playing? 1/yes : 0/no");
+            int choice1 = scanner.nextInt();
+            if (choice1 == 0) {
+                playagain = false;
+                System.out.println("Player has choosen to stop playing, final bankroll amount: " + player.getBankroll());
+            } else if (choice1 == 1) {
+                Console.clearScreen();
+                System.out.println("PLayer has choosen to continue playing, Goodluck!");
+            } else {
+                System.out.println("Invalid option");
+                break;
+            }
+
+
         }
         scanner.close();
-    	}
     }
+}
 

@@ -25,7 +25,13 @@ public class Sound {
             });
 
             // Play the sound
-            clip.start();
+
+            if (sound_name == "jazz"){
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
+            }
+            else {
+                clip.start();
+            }
 
 
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
